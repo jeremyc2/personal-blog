@@ -3,6 +3,12 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
+const payloadSecret = process.env.PAYLOAD_SECRET;
+
+if (!payloadSecret) {
+	throw new Error("PAYLOAD_SECRET environment variable is not set.");
+}
+
 export default buildConfig({
 	// If you'd like to use Rich Text, pass your editor here
 	editor: lexicalEditor(),
@@ -11,9 +17,7 @@ export default buildConfig({
 	collections: [],
 
 	// Your Payload secret - should be a complex and secure string, unguessable
-	secret:
-		process.env.PAYLOAD_SECRET ||
-		"1e18dd7181ca4e307f025844efada6ff6db7e2fe5ac67fb1fdba539bcfda5432",
+	secret: payloadSecret,
 
 	db: sqliteAdapter({
 		client: {

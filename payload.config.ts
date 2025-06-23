@@ -9,6 +9,18 @@ if (!payloadSecret) {
 	throw new Error("PAYLOAD_SECRET environment variable is not set.");
 }
 
+const tursoDatabaseUrl = process.env.TURSO_DATABASE_URL;
+
+if (!tursoDatabaseUrl) {
+	throw new Error("TURSO_DATABASE_URL environment variable is not set.");
+}
+
+const tursoAuthToken = process.env.TURSO_AUTH_TOKEN;
+
+if (!tursoAuthToken) {
+	throw new Error("TURSO_AUTH_TOKEN environment variable is not set.");
+}
+
 export default buildConfig({
 	// If you'd like to use Rich Text, pass your editor here
 	editor: lexicalEditor(),
@@ -21,7 +33,8 @@ export default buildConfig({
 
 	db: sqliteAdapter({
 		client: {
-			url: "file:./payload.db",
+			url: tursoDatabaseUrl,
+			authToken: tursoAuthToken,
 		},
 	}),
 

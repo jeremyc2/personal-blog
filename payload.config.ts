@@ -2,6 +2,7 @@ import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
+import BlogPosts from "./collections/BlogPosts";
 
 const payloadSecret = process.env.PAYLOAD_SECRET;
 
@@ -26,7 +27,7 @@ export default buildConfig({
 	editor: lexicalEditor(),
 
 	// Define and configure your collections in this array
-	collections: [],
+	collections: [BlogPosts],
 
 	// Your Payload secret - should be a complex and secure string, unguessable
 	secret: payloadSecret,

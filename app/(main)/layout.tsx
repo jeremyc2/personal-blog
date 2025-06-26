@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Background } from "@/components/Background";
 import { ThemePicker } from "@/components/ThemePicker";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Personal Blog",
-	description: "A personal blog built with Next.js and Payload CMS",
+	title: "Jeremy Chandler",
+	description: "Where do we begin? Frontend development with Jeremy Chandler.",
 };
 
 export default function RootLayout({
@@ -34,19 +35,29 @@ export default function RootLayout({
 				/>
 			</head>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
 			>
+				<Background />
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<header className="flex items-center justify-between px-6 py-4 bg-card shadow">
-						<h1 className="text-xl font-bold">Personal Blog</h1>
-						<ThemePicker />
+					<header className="px-6 py-4">
+						<h1 className="text-xl font-bold max-w-2xl m-auto">
+							Jeremy Chandler
+						</h1>
 					</header>
-					<main className="max-w-2xl m-auto p-4">{children}</main>
+					<main className="max-w-2xl m-auto p-4 flex-1">{children}</main>
+					<footer className="py-4 px-6 border-t">
+						<div className="max-w-2xl m-auto flex justify-between items-center">
+							<p className="text-sm text-muted-foreground">
+								© {new Date().getFullYear()} Jeremy Chandler
+							</p>
+							<ThemePicker />
+						</div>
+					</footer>
 				</ThemeProvider>
 			</body>
 		</html>

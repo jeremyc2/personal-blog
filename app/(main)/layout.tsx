@@ -44,14 +44,16 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<header className="px-6 py-4">
-						<h1 className="text-xl font-bold max-w-2xl m-auto">
-							Jeremy Chandler
-						</h1>
+					<header className="py-4">
+						<div className="max-w-6xl m-auto px-6">
+							<h1 className="text-xl font-bold">Jeremy Chandler</h1>
+						</div>
 					</header>
-					<main className="max-w-2xl m-auto p-4 flex-1">{children}</main>
-					<footer className="py-4 px-6 border-t">
-						<div className="max-w-2xl m-auto flex justify-between items-center">
+					<main className="flex-1">
+						<div className="max-w-6xl m-auto px-6 py-4">{children}</div>
+					</main>
+					<footer className="py-4 border-t">
+						<div className="max-w-6xl m-auto px-6 flex justify-between items-center">
 							<p className="text-sm text-muted-foreground">
 								© {new Date().getFullYear()} Jeremy Chandler
 							</p>
